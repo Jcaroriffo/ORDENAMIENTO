@@ -5,17 +5,25 @@ public class Main {
     public static void main(String[] args) {
 
         int []Arr=new int[10];
+        int []ceroacinco = {0,1,2,3,4,5};
         int opcion;
+        int suma = 0;
+        int k = 15;
+        boolean encontrado = false;
 
         do{
-            System.out.println("MENÚ PRINCIPAL");
+            System.out.println("\nMENÚ PRINCIPAL");
             System.out.println("1. Algoritmo burbuja");
             System.out.println("2. Algoritmo Binario");
             System.out.println("3. Algoritmo .......");
             System.out.println("4. Algoritmo .......");
             System.out.println("5. Algoritmo Boolean");
             System.out.println("6. Complejidad n^3");
-            System.out.println("7. Salir");
+            System.out.println("7. Complejidad n^2Logn");
+            System.out.println("8. Prueba");
+            System.out.println("9. busqueda");
+            System.out.println("10. n/2");
+            System.out.println("11. Salir");
 
             opcion = leerI();
 
@@ -39,8 +47,28 @@ public class Main {
                 case 6:
                     Complejidad(Arr);
                     break;
+                case 7:
+                    ComplejidadNNLogN(Arr, k);
+                    break;
+                case 8:
+                    if(prueba(ceroacinco,suma, encontrado) != false){
+                        System.out.println("Numero encontrado");
+                    }else{
+                        System.out.println("NO ENCONTRADO");
+                    };
+                    break;
+                case 9:
+                    busqueda(Arr, k);
+                    break;
+                case 10:
+                    if(esMAyoria(Arr) == true){
+                        System.out.println("CUMPLE");
+                    }else{
+                        System.out.println("NO CUMPLE");
+                    }
+                    break;
             }
-        }while(opcion != 7);
+        }while(opcion != 11);
     }
 
     public static void Sort(int[]C, int n){
@@ -163,6 +191,94 @@ public class Main {
         if(respuesta != true){
             System.out.println("No se encontraron 3 numeros que sumados den " + k);
         }
+    }
+
+    public static void ComplejidadNNLogN(int[]Arr, int k){
+
+        for (int i = 0;i<Arr.length;i++){
+            Arr[i] = (int)(Math.random()*10)+1;
+        }
+
+        Arrays.sort(Arr);
+
+        System.out.println("---------------------");
+        for (int i = 0;i<Arr.length;i++){
+            System.out.print(Arr[i] + " ");
+        }
+        System.out.println("\n---------------------");
+
+        for(int i = 0;i<Arr.length - 2;i++){
+            for(int j = i + 1;j<Arr.length - 1;j++){
+                int objetivo = k - (Arr[i] + Arr[j]);
+                int resultado = Arrays.binarySearch(Arr, j + 1, Arr.length, objetivo);
+                if(resultado + Arr[i] + Arr[j] == k){
+                    System.out.print(Arr[i] + " + " + Arr[j] + " + " +  resultado + " = " + k + "\n");
+                }
+            }
+        }
+    }
+
+    public static boolean prueba(int[]Arr, int opcion, boolean encontrado){
+
+        for(int i = 0;i<Arr.length;i++){
+            System.out.print(Arr[i] + " ");
+        }
+        System.out.print("\nNumero a buscar: ");
+        opcion = leerI();
+
+        for (int i = 0; i<Arr.length;i++){
+            if(Arr[i] == opcion){
+                return true;
+            }
+        }return false;
+    }
+
+    public static void busqueda(int []Arr, int k){
+        for(int i = 0;i<Arr.length;i++){
+            Arr[i] = (int)(Math.random()*15)+1;
+            System.out.print(Arr[i] + " ");
+        }
+
+        System.out.println();
+        for (int i = 0;i<Arr.length - 1;i++){
+            for(int j = i + 1;j<Arr.length;j++){
+                if(Arr[i] + Arr[j] == k){
+                    System.out.println("Encontrado: " + Arr[i] + " + " + Arr[j]);
+                }
+            }
+        }
+    }
+
+    public static boolean esMAyoria(int []Arr){
+
+        int suma = 1;
+        for(int i = 1; i<Arr.length;i++){
+            suma++;
+        }
+        System.out.println("Tamaño del arreglo: " + suma);
+
+        for(int i = 0;i<Arr.length;i++){
+            Arr[i] = (int)(Math.random()*2)+1;
+            System.out.print(Arr[i] + " ");
+        }
+        int mitad = suma/2;
+
+        System.out.println("\nMitad: " + mitad);
+        int NumerosIguales = 0;
+
+        for(int i = 0;i<Arr.length - 1;i++){
+            for(int j = i + 1;j<Arr.length;j++){
+                if(Arr[i] == Arr[j]){
+                    NumerosIguales++;
+                }
+            }
+            if(NumerosIguales>mitad){
+                return true;
+            }else{
+                NumerosIguales = 0;
+            }
+        }
+        return false;
     }
 
     public static int leerI(){
