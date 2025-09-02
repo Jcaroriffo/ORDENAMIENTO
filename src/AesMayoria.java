@@ -14,7 +14,7 @@ public class AesMayoria {
         int mitad = suma/2;
 
         System.out.println("\nMitad: " + mitad);
-        int NumerosIguales = 0;
+        int NumerosIguales = 1;
 
         for(int i = 0;i<Arr.length - 1;i++){
             for(int j = i + 1;j<Arr.length;j++){
@@ -25,7 +25,7 @@ public class AesMayoria {
             if(NumerosIguales>mitad){
                 return true;
             }else{
-                NumerosIguales = 0;
+                NumerosIguales = 1;
             }
         }
         return false;
