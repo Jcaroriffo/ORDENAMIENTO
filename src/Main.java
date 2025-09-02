@@ -163,7 +163,6 @@ public class Main {
         if(respuesta != true){
             System.out.println("No se encontraron 3 numeros que sumados den " + k);
         }
-
     }
 
     public static int leerI(){
