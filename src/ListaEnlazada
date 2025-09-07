@@ -1,0 +1,6 @@
+public class ListaEnlazada{
+    Nodo cabeza;
+
+    public ListaEnlazada{
+      cabeza = null;
+    }
