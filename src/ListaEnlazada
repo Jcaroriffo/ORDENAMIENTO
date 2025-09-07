@@ -21,6 +21,19 @@ public class ListaEnlazada{
         }
     }
 
+    public void Ordenar(int dato){
+        Nodo actual = cabeza;
+
+        //Caso 1: Lista vacia o nuevo valor menor que cabeza
+        while(cabeza == null || dato < actual.dato.siguiente){
+            actual = actual.siguiente;
+        }
+        actual.siguiente = nuevo;
+
+        //Caso 2: Buscar donde insertar
+        
+    }
+
     public void AgregarAlInicio(int dato){
         Nodo nuevo = new Nodo (dato);ç
         nuevo.siguiente = cabeza;
