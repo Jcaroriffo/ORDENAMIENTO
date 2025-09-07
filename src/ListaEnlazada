@@ -4,3 +4,35 @@ public class ListaEnlazada{
     public ListaEnlazada{
       cabeza = null;
     }
+
+    //Agregar
+    public void AgregarAlFinal(int dato){
+        Nodo nuevo = new Nodo (dato);
+    
+        //Caso 1: lista vacia
+        if(cabeza == null){
+        cabeza = nuevo;
+        } else {
+            Nodo actual = cabeza;
+            while(actual.siguiente != null){
+                actual = actual.siguiente;
+            }
+        actual.siguiente = nuevo;
+        }
+    }
+
+    public void AgregarAlInicio(int dato){
+        Nodo nuevo = new Nodo (dato);ç
+        nuevo.siguiente = cabeza;
+        cabeza = nuevo;
+    }
+
+    public void Mostrar(){
+        Nodo actual = cabeza;
+        while(actual != null){
+            System.out.print(actual.dato + " -> ");
+            actual = actual.siguiente;
+        }
+        System.out.println("null");
+    }
+}
