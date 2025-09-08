@@ -1,0 +1,17 @@
+Public Class Pila{
+    private int [] elemento;
+    private int tamano;
+    private int tope;
+
+    public Pila(int tam){
+        elemento[] = new int[tam];
+        tamano = tam;
+        tope = -1;
+    }
+
+    public void Push(int x){
+        if(isFully()) throw new Overflow("Pila llena");
+        else 
+    
+}
+        
